@@ -6,6 +6,7 @@ const modal = document.getElementById('certificateModal');
 const modalClose = document.getElementById('modalClose');
 const certificateImage = document.getElementById('certificateImage');
 const certificateButtons = document.querySelectorAll('.certificate-placeholder');
+const photoPhrase = document.getElementById("photoPhrase");
 
 let currentLanguage = 'en';
 
@@ -29,6 +30,12 @@ languageToggle.addEventListener('click', () => {
 certificateButtons.forEach((button) => {
   button.addEventListener('click', () => {
     certificateImage.src = button.dataset.image;
+    const span = button.querySelector('span');
+    photoPhrase.textContent = span.textContent;
+
+    photoPhrase.dataset.en = span.dataset.en;
+    photoPhrase.dataset.pt = span.dataset.pt;
+
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
   });
